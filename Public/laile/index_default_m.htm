@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>{dede:field.seotitle /}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="keywords" content="{dede:field name='description' function='html2text(@me)'/}" />
+
+
+    <!-- Bootstrap -->
+    <link href="{dede:global.cfg_templets_skin/}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{dede:global.cfg_templets_skin/}/css/stylee.css" rel="stylesheet">
+    <link href="{dede:global.cfg_templets_skin/}/css/animate.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color: #081227;padding-top:44px;padding-bottom: 41px;">
+    <!-- head -->
+{dede:include filename='m_head.htm'/}
+
+
+
+
+
+<!--     <div class="bannertype">
+    	<div class="container-fluid">
+			  <div class="bannert1">
+			  	
+			  </div>
+			</div>
+    </div> -->
+    <div class="list_article">
+      <div class="container">
+        <div class="row">
+        {dede:channel typeid='3' row='24'}
+          <div class="article_list col-xs-12  bg-c-ffffff">
+            <div class="container">
+              <div class="row">
+              <a href="view.php?aid=[field:id/]" class="a1">
+                <div class="col-xs-12 imgtype">
+                  <img src="[field:litpic/]" alt="">
+                </div>
+                <div class="col-xs-12 txttype">
+                  <span class="title">
+                    [field:typename/]
+                  </span>
+                  <span class="fr">></span>                     
+                </div>                
+              </a></div>
+            </div>
+          </div>
+         {/dede:channel}
+        </div>
+      </div>
+    </div>
+<!--1 -->
+{dede:include filename='m_foot.htm'/}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{dede:global.cfg_templets_skin/}/js/bootstrap.min.js"></script>
+    
+    <script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+    <script>
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 5,
+        offset : 205,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>
+  </body>
+</html>

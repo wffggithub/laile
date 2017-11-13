@@ -1,0 +1,206 @@
+<include file="Public/head"/>
+<body class="no-skin">
+<include file="Public/header"/>
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <include file="Public/sidebar"/>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!-- #section:basics/content.breadcrumbs -->
+            <include file="Public/breadcrumbs"/>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <include file="Public/set"/>
+
+                <!-- /section:settings.box -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" id="form" method="post" action="{:U('update')}">
+
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <input type="hidden" name="id" value="{$solution.id}" id="aid"/>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-0">
+                                    导航 </label>
+                                <div class="col-sm-9">
+                                    <select id="sid" name="sid" class="col-xs-10 col-sm-5">
+                                        <option value="0">--导航--</option>
+                                        <volist name="category" id="vo">
+                                            <option value="{$vo.id}" <if condition="$vo['id'] eq $solution['sid']">selected</if>>{$vo.name}</option>
+                                        </volist>
+
+                                    </select>
+
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">选择所属导航。</span>
+											</span>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    SEO标题 </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="seotitle" id="seotitle" placeholder="SEO标题"
+                                           class="col-xs-10 col-sm-5" value="{$solution.seotitle}">
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">请填写SEO标题利于SEO优化</span>
+											</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    关键词 </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="keywords" id="keywords" placeholder="关键词"
+                                           class="col-xs-10 col-sm-5" value="{$solution['keywords']}">
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">文章关键词。</span>
+											</span>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-3">
+                                    描述 </label>
+                                <div class="col-sm-9">
+                                        <textarea name="description" id="description" placeholder="描述"
+                                                  class="col-xs-10 col-sm-5"
+                                                  rows="5">{$solution['description']}</textarea>
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">描述。</span>
+											</span>
+                                </div>
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-4">
+                                    banner图 </label>
+                                <div class="col-sm-9">
+                                    <div class="col-xs-10 col-sm-5">
+                                        {:UpImage("image_path",100,100,$solution['image_path'])}
+                                    </div>
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">仅支持jpg、gif、png、bmp、jpeg，且小于1MB。</span>
+											</span>
+                                </div>
+
+                            </div>
+                            <div class="space-4"></div>
+
+                           <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    内容 </label>
+                                <div class="col-sm-9">
+                                        <textarea name="content" id="content"
+                                                  style="width:100%;height:400px;visibility:hidden;">{$solution['content']}</textarea>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-offset-2 col-md-9">
+                                <button class="btn btn-info submit" type="button">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重置
+                                </button>
+                               <!-- <button class="btn" type="button" id="button">
+                                    <i class="icon-undo bigger-110"></i>
+                                    切换
+                                </button>-->
+                            </div>
+
+                            <!-- PAGE CONTENT ENDS -->
+
+
+                        </form>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <include file="Public/footer"/>
+
+</div><!-- /.main-container -->
+
+<include file="Public/footerjs"/>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    $(function () {
+        $("#button").bind('click',function(){
+            document.getElementById('imgSrc').src="http://study-media-in.oss-cn-shenzhen.aliyuncs.com/UID_11/goods2.png";
+            document.getElementById('src').src="http://study-media-in.oss-cn-shenzhen.aliyuncs.com/UID_11/%E5%BA%8F%E5%88%97%2001.mp4";
+            document.getElementById("video").load();
+            //$("#imgSrc").attr('src','http://study-media-in.oss-cn-shenzhen.aliyuncs.com/UID_11/goods2.png');
+        })
+
+        $("#tabs").tabs();
+        var editor = KindEditor.create('textarea[name="content"]', {
+            uploadJson: '__PUBLIC__/kindeditor/php/upload_json.php',
+            fileManagerJson: '__PUBLIC__/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterBlur: function () {
+                this.sync();
+            }
+        });
+        $(".submit").click(function () {
+            var sid = $("#sid").val();
+           /* var title = $("#title").val();*/
+            var content = $.trim($("#content").val());
+            //var is_hot = $("input[name='is_hot']:checked").val();
+          /*  var is_home_L = $("input[name='is_home_l']:checked").val();*/
+            if (sid == 0) {
+                bootbox.dialog({
+                    title: '友情提示：',
+                    message: "导航必须选择。",
+                    buttons: {
+                        "success": {
+                            "label": "确定",
+                            "className": "btn-danger"
+                        }
+                    }
+                });
+                return;
+            }
+
+            if (content == '') {
+                bootbox.dialog({
+                    title: '友情提示：',
+                    message: "内容必须填写。",
+                    buttons: {
+                        "success": {
+                            "label": "确定",
+                            "className": "btn-danger"
+                        }
+                    }
+                });
+                return;
+            }
+
+            $("#form").submit();
+        });
+    });
+</script>
+</body>
+</html>

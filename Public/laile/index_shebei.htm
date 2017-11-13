@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{dede:field.seotitle /}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="keywords" content="{dede:field name='description' function='html2text(@me)'/}" />
+
+	<link rel="stylesheet" href="{dede:global.cfg_templets_skin/}/css/style.css" />
+</head>
+<body style="background-color: #eeeeee;">
+	{dede:include filename='head.htm'/}
+  <div class="banner h378 ibanner">
+		<img src="{dede:global.cfg_templets_skin/}/images/t7.jpg" alt="" />
+  </div>
+	<div class="middlle p-r mt60 article_sb_type">
+		<div class="w1200 clearfix">
+			<div class="fl w244">
+				<div class="title">
+					设备展示
+				</div>
+				<ul style="margin-bottom: 62px;">
+{dede:channel row='10' typeid='4' type ='son'   currentstyle="<li  class='cur' ><a href='~typelink~' ><span class='en'>~typename~</span></a> </li>" }
+         <li><a href="[field:typelink/]"><span class="en">[field:typename/]</span></a></li>
+ {/dede:channel} 
+
+				</ul>		
+			</div>
+			<div class="fr w911 sb_type">
+				{dede:field.content/}
+			</div>
+		</div>
+	</div>
+	{dede:include filename='foot.htm'/}
+
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="{dede:global.cfg_templets_skin/}/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript">
+    jQuery(".banner").slide({mainCell:".bd ul",trigger:"click",effect:"fold",autoPlay:false,easing:"easeOutCirc"});
+      jQuery(".banner").hover(function(){
+     $(".banner .prev").stop(true,true).animate({
+      left: '0',opacity: '1'
+     })
+     $(".banner .next").stop(true,true).animate({
+      right: '-1200',opacity: '1'
+     })
+    },function(){
+      $(".banner .prev").stop(true,true).animate({
+       left: '-90',opacity: '0'
+      })
+      $(".banner .next").stop(true,true).animate({
+       right: '-1280',opacity: '0'
+      })
+    });/*鼠标移过，左右按钮显示*/
+
+    </script>	
+</body>
+</html>

@@ -1,0 +1,88 @@
+<include file="Public/head" />
+<include file="Public/header" />
+
+	<!-- banner -->
+	<div class="banner">
+		<img src="{$bannerPC['image_path']}" alt="banner">
+		<!-- <div class="container">
+			<div class="row">
+			</div>
+		</div> -->
+	</div>
+	<!-- banner -->
+
+	<!-- sub-nav -->
+	<!-- <div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper" style="padding: 0px 36%;">
+						<div class="swiper-slide active-nav hidden-xs"><span>企业新闻</span></div>
+						<div class="swiper-slide hidden-xs"><span>潮流新闻</span></div>
+						<div class="swiper-slide active-nav visible-xs"><span>企业</span></div>
+						<div class="swiper-slide visible-xs"><span>潮流</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- sub-nav -->
+
+	<!-- news -->
+	<div class="news">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="news-detail">
+						<h1>{$info['title']}</h1>
+						{$info['content']}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style>
+		.news-detail h1{
+			font-size: 20px;
+			text-align: center;
+			margin: 20px auto 30px;
+			font-weight: bold;
+		}
+		.news-detail p{
+			line-height: 25px;
+			margin-bottom: 20px;
+   			text-indent: 2em;
+		}
+		.news-detail img{
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+		}
+	</style>
+	<!-- news -->
+
+
+<include file="Public/footer" />
+
+	<!-- common js -->
+	<script type="text/javascript">
+		function sq(obj) {
+			var val = $(obj).val().length;
+			if (val < 11) {
+				alert("至少输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+
+		function ta(obj) {
+			var val = $(obj).val().length;
+			if (val > 11) {
+				alert("至多输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+	</script>
+	<!-- common js -->
+</body>
+
+</html>

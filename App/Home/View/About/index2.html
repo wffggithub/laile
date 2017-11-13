@@ -1,0 +1,118 @@
+<include file="Public/head" />
+<include file="Public/header" />
+<style>
+	.swiper-slide a{
+		color: #363636;
+		text-decoration: none;
+	}
+	.swiper-slide a:hover{
+		color: #363636;
+		text-decoration: none;
+	}
+</style>
+	<!-- banner -->
+	<div class="banner">
+		<img src="__PUBLIC__/milan/img/about/banner.png" alt="banner">
+		<!-- <div class="container">
+			<div class="row">
+			</div>
+		</div> -->
+	</div>
+	<!-- banner -->
+
+	<!-- sub-nav -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper" style="padding: 0px 22%;">
+						<volist name="about_cate" id="vo">
+							<div class="swiper-slide hidden-xs <if condition="$vo['id'] eq $channel_id">active-nav</if> "><span><a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}" <if condition="$vo['id'] eq $channel_id">style="color:#eac0aa"</if>>{$vo['name']}</a></span></div>
+							<div class="swiper-slide visible-xs <if condition="$vo['id'] eq $channel_id">active-nav</if> "><span><a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}" <if condition="$vo['id'] eq $channel_id">style="color:#eac0aa"</if>><?php echo (mb_substr($vo['name'],0,2,'utf-8'));?></a></span></div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- sub-nav -->
+<if condition="$channel_id eq 53">
+	<div class="honor">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="swiper-container swiper">
+						<div class="swiper-wrapper">
+
+							<volist name="honor" id="vo">
+								<div class="swiper-slide">
+									<img src="{$vo.image_path}" width="100%" alt="honor">
+								</div>
+							</volist>
+
+						</div>
+					</div>
+					<script>
+						var swiper = new Swiper('.swiper', {
+							autoplay: 2000,
+							slidesPerView: 3,
+							spaceBetween: 30,
+							observer:true,
+							observeParents:true,
+							pagination: '.swiper-pagination'
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</if>
+	<!-- about -->
+	<div class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<img src="{$introduce['banner_image_path']}" width="100%" alt="">
+				</div>
+			</div>
+			<div class="row about-main">
+				<div class="col-xs-12 col-sm-6">
+					<img src="{$introduce['image_path']}" width="100%" alt="">
+				</div>
+				<div class="col-xs-12 col-sm-1"></div>
+				<div class="col-xs-12 col-sm-5">
+					<p class="about-title">{$introduce['title']}</p>
+					<div class="about-con">
+						{$introduce['content']}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- about -->
+
+
+<include file="Public/footer" />
+
+	<!-- common js -->
+	<script type="text/javascript">
+		function sq(obj) {
+			var val = $(obj).val().length;
+			if (val < 11) {
+				alert("至少输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+
+		function ta(obj) {
+			var val = $(obj).val().length;
+			if (val > 11) {
+				alert("至多输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+	</script>
+	<!-- common js -->
+</body>
+
+</html>

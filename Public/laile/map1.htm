@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{dede:field.seotitle /}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="keywords" content="{dede:field name='description' function='html2text(@me)'/}" />
+	<link rel="stylesheet" href="{dede:global.cfg_templets_skin/}/css/style.css" />
+</head>
+<body style="background-color: #eeeeee;">
+	{dede:include filename='head.htm'/}
+	<div class="middlle p-r maptype slideTxtBox">
+		<div class="clearfix maptitle">
+		<div class="w1200 hd">
+			<ul class="clearfix">
+				<li><a href="map.html">深圳</a></li>
+				<li class="on"><a href="map1.html">广州</a></li>
+				<li><a href="javascript:;">佛山</a></li>
+				<li><a href="javascript:;">东莞</a></li>
+				<li><a href="javascript:;">珠海</a></li>
+				<li><a href="javascript:;">西安</a></li>
+				<li><a href="javascript:;">南昌</a></li>
+				<li><a href="javascript:;">长沙</a></li>
+			</ul>
+		</div>
+		</div>	
+		<div class="clearfix bd">
+			<ul>
+		    <div id="outer-box">
+		        <div id="container">
+		        </div>
+		        <div id="panel">
+		            <div id="intro">
+		                <h3>定位查询</h3>
+		            </div>
+		            <ul id="my-list"></ul>
+		        </div>
+		    </div>				
+			</ul>
+			<ul>1</ul>
+			<ul>2</ul>
+			<ul>3</ul>
+			<ul>4</ul>
+			<ul>5</ul>
+			<ul>6</ul>
+			<ul>7</ul>			
+		</div>
+	</div>
+	{dede:include filename='foot.htm'/}
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=j40Gv039eBvmGrNoO5ooTzDl"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="{dede:global.cfg_templets_skin/}/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript">
+    jQuery(".banner").slide({mainCell:".bd ul",trigger:"click",effect:"fold",autoPlay:false,easing:"easeOutCirc"});
+      jQuery(".banner").hover(function(){
+     $(".banner .prev").stop(true,true).animate({
+      left: '0',opacity: '1'
+     })
+     $(".banner .next").stop(true,true).animate({
+      right: '-1200',opacity: '1'
+     })
+    },function(){
+      $(".banner .prev").stop(true,true).animate({
+       left: '-90',opacity: '0'
+      })
+      $(".banner .next").stop(true,true).animate({
+       right: '-1280',opacity: '0'
+      });
+    });/*鼠标移过，左右按钮显示*/
+		// jQuery(".slideTxtBox").slide();
+
+    </script>	
+<script type="text/javascript" src='http://webapi.amap.com/maps?v=1.3&key=43ff1694711e6bf80c9af20924b8737c'></script>
+    <!-- UI组件库 1.0 -->
+    <script src="http://webapi.amap.com/ui/1.0/main.js?v=1.0.10"></script>
+    <script type="text/javascript">
+    //创建地图
+    var map = new AMap.Map('container', {
+        zoom: 9
+    });
+    
+    AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWindow'],
+        function(MarkerList, SimpleMarker, SimpleInfoWindow) {
+
+            var markerList = new MarkerList({
+                //关联的map对象
+                map: map,
+                //列表的dom容器的id
+                listContainer: 'my-list',
+
+                //返回数据项的Id
+                getDataId: function(dataItem, index) {
+                    //index表示该数据项在数组中的索引位置，从0开始，如果确实没有id，可以返回index代替
+                    return dataItem.id;
+                },
+                //返回数据项的位置信息，需要是AMap.LngLat实例，或者是经纬度数组，比如[116.789806, 39.904989]
+                getPosition: function(dataItem) {
+                    return dataItem.position;
+                },
+                //返回数据项对应的Marker
+                getMarker: function(dataItem, context, recycledMarker) {
+
+                    //存在可回收利用的marker
+                    if (recycledMarker) {
+                        //直接更新内容返回
+                        recycledMarker.setIconLabel(context.id);
+                        recycledMarker.setIconStyle(dataItem.iconStyle);
+                        return recycledMarker;
+                    }
+
+                    //返回一个新的Marker
+                    return new SimpleMarker({
+                        containerClassNames: 'my-marker',
+                        iconStyle: dataItem.iconStyle,
+                        iconLabel: context.id
+                    });
+                },
+                //返回数据项对应的infoWindow
+                getInfoWindow: function(dataItem, context, recycledInfoWindow) {
+
+                    if (recycledInfoWindow) {
+                        //存在可回收利用的infoWindow, 直接更新内容返回
+                        recycledInfoWindow.setInfoTitle(dataItem.title);
+                        recycledInfoWindow.setInfoBody(dataItem.desc);
+                        return recycledInfoWindow;
+                    }
+
+                    //返回一个新的InfoWindow
+                    return new SimpleInfoWindow({
+                        offset: new AMap.Pixel(0, -37),
+                        infoTitle: dataItem.title,
+                        infoBody: dataItem.desc
+                    });
+                },
+                getListElement: function(dataItem, context, recycledListElement) {
+
+                    // var tpl = '<button style="background-color:<%= dataItem.iconStyle %>">' +
+                    //     '<%- dataId %></button> <%- dataItem.title %>';
+                     var tpl = '<i class="num"><%- dataId %></i><%- dataItem.title %> ';                    
+
+                    var content = MarkerList.utils.template(tpl, {
+                        dataItem: dataItem,
+                        dataId: context.id
+                    });
+
+                    if (recycledListElement) {
+                        //存在可回收利用的listElement, 直接更新内容返回
+                        recycledListElement.innerHTML = content;
+                        return recycledListElement;
+                    }
+
+                    //返回一段html，MarkerList将利用此html构建一个新的dom节点
+                    return '<li>' + content + '</li>';
+                }
+
+            });
+
+            //构建一个数据项数组，数据项本身没有格式要求，但需要支持下述的getDataId和getPosition
+            var data = [{
+                id: 'A',
+                position: [113.270493,23.131765],
+                iconStyle: 'red',
+                title: '公园1',
+                desc: '描述_1'
+            }, {
+                id: 'B',
+                position: [113.247999,23.130037],
+                iconStyle: 'green',
+                title: '公园2',
+                desc: '描述_2'
+            }, {
+                id: 'C',
+                position: [113.26884,23.122194],
+                iconStyle: 'purple',
+                title: '公园3',
+                desc: '描述_3'
+            }, {
+                id: 'D',
+                position: [113.295429,23.121396],
+                iconStyle: 'purple',
+                title: '公园4',
+                desc: '描述_3'
+            }];
+
+            //展示该数据
+            markerList.render(data);
+        });
+    </script>
+
+</body>
+</html>

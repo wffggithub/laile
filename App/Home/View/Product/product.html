@@ -1,0 +1,179 @@
+<include file="Public/head" />
+<include file="Public/header" />
+
+	<!-- banner -->
+	<div class="banner">
+		<img src="{$bannerPC['image_path']}" alt="banner">
+	</div>
+	<!-- banner -->
+
+	<!-- sub-nav -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper">
+						<volist name="product_cate" id="vo">
+							<div class="swiper-slide hidden-xs <if condition="$vo['id'] eq $channel_id">active-nav</if>"><span><a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}" <if condition="$vo['id'] eq $channel_id">style="color:#eac0aa"</if>>{$vo['name']}</a></span></div>
+							<div class="swiper-slide visible-xs <if condition="$vo['id'] eq $channel_id">active-nav</if> "><span><a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}" <if condition="$vo['id'] eq $channel_id">style="color:#eac0aa"</if>><?php echo (mb_substr($vo['name'],0,2,'utf-8'));?></a></span></div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- sub-nav -->
+
+	<!-- products -->
+	<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="swiper-container" id="swiper-container3">
+						<div class="swiper-wrapper">
+							<volist name="product" id="vo">
+								<div class="swiper-slide">
+									<div class="img"><img src="{$vo['image_path']}" width="100%" alt=""></div>
+								</div>
+							</volist>
+						</div>
+						<div class="swiper-button-prev hidden-xs"></div>
+						<div class="swiper-button-next hidden-xs"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var swiper3 = new Swiper('#swiper-container3', {
+			autoplay: 2000,
+			slidesPerView: 3,
+			spaceBetween: 15,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev'
+		})
+	</script>
+	<!-- products -->
+
+<!-- advan -->
+<div class="advan" style="background-color:#c666f5;">
+	<div class="container hidden-xs">
+		<div class="row">
+			<div class="col-xs-6">
+				<img src="__PUBLIC__/milan/img/product/advantage1.png" width="100%" alt="advan">
+			</div>
+			<div class="col-xs-6">
+				<video controls="controls" poster="__PUBLIC__/milan/img/index/video.png">
+					<source src="{$video['url']}" type="video/mp4" />
+					<source src="{$video['url']}" type="video/ogg" />
+					Your browser does not support HTML5 video.
+				</video>
+			</div>
+		</div>
+	</div>
+
+	<div class="container visible-xs">
+		<div class="row">
+			<div class="col-xs-12">
+				<img src="__PUBLIC__/milan/img/product/advantage1.png" width="100%" alt="advan">
+			</div>
+			<div class="col-xs-12" style="background-color:#fff;">
+				<video controls="controls" poster="__PUBLIC__/milan/img/index/video.png">
+					<source src="{$video['url']}" type="video/mp4" />
+					<source src="{$video['url']}" type="video/ogg" />
+					Your browser does not support HTML5 video.
+				</video>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- advan -->
+	
+	<!-- goods -->
+	<div class="goods">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="goods-nav">
+						热门推荐
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="swiper-container swiper2">
+						<div class="swiper-wrapper">
+							<volist name="hotData" id="vo">
+								<div class="swiper-slide">
+									<a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}"><img src="{$vo['image_path']}" width="100%" alt="goods"></a>
+								</div>
+							</volist>
+
+						</div>
+						<div class="swiper-button-prev hidden-xs"></div>
+						<div class="swiper-button-next hidden-xs"></div>
+					</div>
+					<script>
+						var swiper2 = new Swiper('.swiper2', {
+							autoplay: 2000,
+							slidesPerView: 4,
+							spaceBetween: 15,
+							observer:true,
+							observeParents:true,
+							pagination: '.swiper-pagination',
+							paginationClickable: true,
+							nextButton: '.swiper-button-next',
+							prevButton: '.swiper-button-prev'
+						})
+						if(document.body.clientWidth < 768){
+							swiper2.params.slidesPerView = '3';
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- goods -->
+	
+
+	<!-- hot -->
+	<div class="hot hot-w">
+		<div class="container">
+
+			<volist name="join" id="vo">
+				<div class="row">
+
+					<div>
+						<img src="{$vo.image_path}" width="100%" alt="hot1">
+					</div>
+
+				</div>
+
+			</volist>
+
+		</div>
+	</div>
+	<!-- hot -->
+
+<include file="Public/footer" />
+	
+	<!-- common js -->
+	<script type="text/javascript">
+		function sq(obj) {
+			var val = $(obj).val().length;
+			if (val < 11) {
+				alert("至少输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+
+		function ta(obj) {
+			var val = $(obj).val().length;
+			if (val > 11) {
+				alert("至多输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+	</script>
+	<!-- common js -->
+</body>
+
+</html>

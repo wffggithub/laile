@@ -1,0 +1,168 @@
+<include file="Public/head"/>
+<body class="no-skin">
+<include file="Public/header"/>
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <include file="Public/sidebar"/>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!-- #section:basics/content.breadcrumbs -->
+            <include file="Public/breadcrumbs"/>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <include file="Public/set"/>
+
+                <!-- /section:settings.box -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" id="form" method="post" action="{:U('update')}">
+
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <input type="hidden" name="id" value="{$video.id}" id="aid"/>
+
+                           <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                    地址 </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="url" id="url" placeholder="url"
+                                           class="col-xs-10 col-sm-5" value="{$video['url']}">
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">地址不能为空。</span>
+											</span>
+                                </div>
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                    类型 </label>
+                                <div class="col-sm-5">
+                                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                        音频</label>
+                                    <div class="col-sm-1" style="margin-top: 5px;">
+                                        <input type="radio" name="is_video" class="is_video" value="0" <if condition="$video['is_video'] eq 0">checked="checked"</if>
+                                        >
+                                    </div>
+
+                                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                        视频</label>
+                                    <div class="col-sm-5" style="margin-top: 7px;">
+                                        <input type="radio" name="is_video" class="is_video" value="1" <if condition="$video['is_video'] eq 1">checked="checked"</if>
+                                        >
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                    位置</label>
+                                <div class="col-sm-5">
+                                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                        全站</label>
+                                    <div class="col-sm-1" style="margin-top: 5px;">
+                                        <input type="radio" name="position" class="position" value="0" <if condition="$video['position'] eq 0">checked="checked"</if>
+                                        >
+                                    </div>
+                                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1">
+                                        首页</label>
+                                    <div class="col-sm-1" style="margin-top: 5px;">
+                                        <input type="radio" name="position" class="position" value="1" <if condition="$video['position'] eq 1">checked="checked"</if>
+                                        >
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">
+                                    产品中心</label>
+                                    <div class="col-sm-1" style="margin-top: 7px;">
+                                        <input type="radio" name="position" class="position" value="2" <if condition="$video['position'] eq 2">checked="checked"</if>
+                                        >
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">
+                                        招商加盟</label>
+                                    <div class="col-sm-3" style="margin-top: 7px;">
+                                        <input type="radio" name="position" class="position" value="3" <if condition="$video['position'] eq 3">checked="checked"</if>
+                                        >
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="col-md-offset-2 col-md-9">
+                                <button class="btn btn-info submit" type="button">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重置
+                                </button>
+                            </div>
+
+                            <!-- PAGE CONTENT ENDS -->
+
+
+                        </form>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <include file="Public/footer"/>
+
+</div><!-- /.main-container -->
+
+<include file="Public/footerjs"/>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+        var editor = KindEditor.create('textarea[name="content"]', {
+            uploadJson: '__PUBLIC__/kindeditor/php/upload_json.php',
+            fileManagerJson: '__PUBLIC__/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterBlur: function () {
+                this.sync();
+            }
+        });
+        $(".submit").click(function () {
+            var sid = $("#sid").val();
+            var url = $("#url").val();
+            var phone = $("#phone").val();
+            var company = $("#company").val();
+            var content = $("#content").val();
+
+            if (url == '') {
+                bootbox.dialog({
+                    title: '友情提示：',
+                    message: "地址必须填写。",
+                    buttons: {
+                        "success": {
+                            "label": "确定",
+                            "className": "btn-danger"
+                        }
+                    }
+                });
+                return;
+            }
+
+            $("#form").submit();
+        });
+    });
+</script>
+</body>
+</html>

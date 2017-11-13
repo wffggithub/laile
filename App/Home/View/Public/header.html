@@ -1,0 +1,71 @@
+</head>
+<body>
+
+<!--top-->
+<div class="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="logo">
+                    <img src="__PUBLIC__/milan/img/index/logo.png" alt="logo">
+                    <style>
+                        .music{position:absolute;top:30px;right:15px;width:50px;height:50px;cursor:pointer}
+                        .music .circle{animation:circle 5s infinite linear;-webkit-animation:circle 5s infinite linear;-moz-animation:circle 5s infinite linear;-o-animation:circle 5s infinite linear}
+                        @keyframes circle{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+                        @-moz-keyframes circle{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+                        @-o-keyframes circle{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+                        @-webkit-keyframes circle{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+                        @media (max-width: 768px){
+                            .music{position:absolute;top:5px;right:5px;width:30px;height:30px;cursor:pointer}
+                        }
+                    </style>
+                    <div class="music" onclick="javascript:play();">
+                        <img id="icon_music" class="circle" src="__PUBLIC__/milan/img/music.jpg" width="100%" alt="music">
+                        <audio class="audio" autoplay="autoplay" loop="loop">
+                            <source src="{$music.url}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <script>
+                        function play(){
+                            var audio = document.querySelector(".audio");
+                            var music = document.querySelector(".music");
+                            var icon = document.querySelector("#icon_music");
+                            if(audio.paused){
+                                audio.play();
+                                icon.className = "circle";
+                            }else{
+                                audio.pause();
+                                icon.className = "";
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--nav-->
+<div class="nav-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="navs clearfix">
+                    <volist name="channel" id="vo">
+                        <div class='nav-item'>
+                            <a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}" class="hidden-xs">{$vo.name}</a>
+                            <?php $nn = count($vo['child']);?>
+                           <a <if condition="$nn eq 0">href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}"</if> class="visible-xs"><?php echo (mb_substr($vo['name'],0,2,'utf-8'));?></a>
+                            <div class="item-blow">
+                                <volist name="vo.child" id="voo">
+                                    <a href="{:U($voo['link'],array('id'=>$voo['id'],'pid'=>$voo['pid']))}">{$voo.name}</a>
+                                </volist>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--nav-->

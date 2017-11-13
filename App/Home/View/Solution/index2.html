@@ -1,0 +1,130 @@
+<include file="Public/head" />
+<include file="Public/header" />
+
+<style>
+	.swiper-slide a{
+		color: #363636;
+		text-decoration: none;
+	}
+	.swiper-slide a:hover{
+		color: #363636;
+		text-decoration: none;
+	}
+</style>
+	<!-- banner -->
+	<div class="banner">
+		<img src="{$bannerPC['image_path']}" alt="banner">
+		<!-- <div class="container">
+			<div class="row">
+			</div>
+		</div> -->
+	</div>
+	<!-- banner -->
+
+	<!-- sub-nav -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper" style="padding: 0px 36%;">
+						<volist name="store_cate" id="vo" key="k">
+							<div class="swiper-slide <if condition="$k eq 1">active-nav</if> hidden-xs"><span>{$vo['name']}</span></div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("#swiper-container2 .swiper-slide").on('touchstart mousedown', function (fe) {
+			fe.preventDefault()
+			$("#swiper-container2 .swiper-slide.active-nav").removeClass('active-nav')
+			$(this).addClass('active-nav')
+			$(".swiper").hide()
+			$("#market" + $(this).index()).show()
+		})
+		$("#swiper-container2 .swiper-slide").click(function (de) {
+			de.preventDefault()
+		})
+	</script>
+	<!-- sub-nav -->
+
+	<!-- market -->
+	<div class="market">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="market-title">终端店铺形象的展示</div>
+					<div class="swiper-container swiper" id="market0">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>
+							<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>
+							<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>
+						</div>
+						<!-- <div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div> -->
+					</div>
+					<div class="swiper-container swiper"   style="display:none;">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>
+						<!--	<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>
+							<div class="swiper-slide">
+								<img src="__PUBLIC__/milan/img/market/market.png" width="100%" alt="market">
+							</div>-->
+						</div>
+					</div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+					<script>
+                        var swipers = new Swiper('.swiper', {
+                            autoplay: 2000,
+                            spaceBetween: 100,
+                            // loop: true,
+                            observer:true,
+                            observeParents:true,
+                            nextButton: '.swiper-button-next',
+                            prevButton: '.swiper-button-prev'
+                        })
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- market -->
+
+
+<include file="Public/footer" />
+
+	<!-- common js -->
+	<script type="text/javascript">
+		function sq(obj) {
+			var val = $(obj).val().length;
+			if (val < 11) {
+				alert("至少输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+
+		function ta(obj) {
+			var val = $(obj).val().length;
+			if (val > 11) {
+				alert("至多输入11个字符！");
+				$(obj).val($(obj).val().substring(0, 11))
+			}
+		}
+	</script>
+	<!-- common js -->
+
+</body>
+
+</html>

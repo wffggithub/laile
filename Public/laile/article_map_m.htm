@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{dede:field.title /}</title>
+
+    <!-- Bootstrap -->
+    <link href="{dede:global.cfg_templets_skin/}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{dede:global.cfg_templets_skin/}/css/stylee.css" rel="stylesheet">
+    <link href="{dede:global.cfg_templets_skin/}/css/animate.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color: #081227;overflow:hidden;">
+    <!-- head -->
+     <nav id="header" class="navbar navbar-default navbar-fixed-top" data-spy="affix" data-offset-top="25">
+        <div class="container">
+          
+          <div class="navbar-header">
+            <a id="nav-toggle" href="/m/list.php?tid=22" class="nav-toggle-action collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              注册/登录
+            </a>          
+            <h1 class="fr" style="color: #ffffff;left: 50%;position: absolute;transform: translate(-50%,0%);line-height: 27px;font-size: 1.4rem;">当前地区：{dede:field.title /}</h1>
+            <a class="o-logo" href="/m/"></a>
+          </div>
+
+
+        </div>
+    </nav> 
+<div class="wrapper wrapper02" id="wrapper02" style="position: absolute;top: 43px;z-index: 2;left: 0;">
+  <div class="scroller">
+    <ul class="clearfix">
+          {dede:arclist row='20' titlelen='250' typeid='2' orderby='click' orderway='desc'}
+      <li id="b_[field:id/]"><a href="view.php?aid=[field:id/]">[field:title/]</a></li>
+{/dede:arclist}
+    </ul>
+  </div>
+</div>
+
+        <div id="outer-box">
+            <div id="container">
+            </div>
+            <div id="panel">
+                <div id="intro">
+                    <h3>定位查询</h3>
+                </div>
+                <div id="my-l">
+                  <ul id="my-list"></ul>
+                </div>
+            </div>
+        </div>
+<span style="font-family:Microsoft YaHei;font-size:18px;color:#333333;">/*--滚动条--*/ ::-webkit-scrollbar{ width:5px; height:5px; background-color:#fff;} ::-webkit-scrollbar:hover{ background-color:#eee; } ::-webkit-resizer{} ::-webkit-scrollbar-thumb{ -webkit-border-radius:4px; background-color:#ccc; height:10px; } ::-webkit-scrollbar-thumb:hover{ background-color: #aaa;} ::-webkit-scrollbar-thumb:active{ background-color:#888;}</span>
+{dede:include filename='m_foot.htm'/}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{dede:global.cfg_templets_skin/}/js/bootstrap.min.js"></script>
+    
+    <script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+        <script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/iscroll.js"></script>
+    <script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/navbarscroll.js"></script>
+    <input type="hidden" value="{dede:field.id/}" id="aaid"/>
+
+  <script>
+
+    $(document).ready(function(){
+
+      var ccid=$("#aaid").val();
+
+      $("#b_"+ccid).addClass("cur1");
+
+      });
+
+
+
+  </script>
+<script type="text/javascript">
+$(function(){
+
+  //demo示例一到四 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+  $('.wrapper').navbarscroll();
+
+  //demo示例五 通过id调取
+  $('#demo05').navbarscroll({
+    defaultSelect:6,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+  
+  //demo示例六 通过id调取
+  $('#demo06').navbarscroll({
+    defaultSelect:3,
+    scrollerWidth:6,
+    fingerClick:1,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+});
+</script> 
+    <script>
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 5,
+        offset : 205,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>
+<script type="text/javascript" src='http://webapi.amap.com/maps?v=1.3&key=43ff1694711e6bf80c9af20924b8737c'></script>
+    <!-- UI组件库 1.0 -->
+    <script src="http://webapi.amap.com/ui/1.0/main.js?v=1.0.10"></script>
+
+<script type="text/javascript">
+
+    //创建地图
+
+    var map = new AMap.Map('container', {
+
+        zoom: 9
+
+    });
+
+    
+
+    AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWindow'],
+
+        function(MarkerList, SimpleMarker, SimpleInfoWindow) {
+
+
+
+            var markerList = new MarkerList({
+
+                //关联的map对象
+
+                map: map,
+
+                //列表的dom容器的id
+
+                listContainer: 'my-list',
+
+
+
+                //返回数据项的Id
+
+                getDataId: function(dataItem, index) {
+
+                    //index表示该数据项在数组中的索引位置，从0开始，如果确实没有id，可以返回index代替
+
+                    return dataItem.id;
+
+                },
+
+                //返回数据项的位置信息，需要是AMap.LngLat实例，或者是经纬度数组，比如[116.789806, 39.904989]
+
+                getPosition: function(dataItem) {
+
+                    return dataItem.position;
+
+                },
+
+                //返回数据项对应的Marker
+
+                getMarker: function(dataItem, context, recycledMarker) {
+
+
+
+                    //存在可回收利用的marker
+
+                    if (recycledMarker) {
+
+                        //直接更新内容返回
+
+                        recycledMarker.setIconLabel(context.id);
+
+                        recycledMarker.setIconStyle(dataItem.iconStyle);
+
+                        return recycledMarker;
+
+                    }
+
+
+
+                    //返回一个新的Marker
+
+                    return new SimpleMarker({
+
+                        containerClassNames: 'my-marker',
+
+                        iconStyle: dataItem.iconStyle,
+
+                        iconLabel: context.id
+
+                    });
+
+                },
+
+                //返回数据项对应的infoWindow
+
+                getInfoWindow: function(dataItem, context, recycledInfoWindow) {
+
+
+
+                    if (recycledInfoWindow) {
+
+                        //存在可回收利用的infoWindow, 直接更新内容返回
+
+                        recycledInfoWindow.setInfoTitle(dataItem.title);
+
+                        recycledInfoWindow.setInfoBody(dataItem.desc);
+
+                        return recycledInfoWindow;
+
+                    }
+
+
+
+                    //返回一个新的InfoWindow
+
+                    return new SimpleInfoWindow({
+
+                        offset: new AMap.Pixel(0, -37),
+
+                        infoTitle: dataItem.title,
+
+                        infoBody: dataItem.desc
+
+                    });
+
+                },
+
+                getListElement: function(dataItem, context, recycledListElement) {
+
+
+
+                    // var tpl = '<button style="background-color:<%= dataItem.iconStyle %>">' +
+
+                    //     '<%- dataId %></button> <%- dataItem.title %>';
+
+                     var tpl = '<div class="clearfix"><div class="fl"><i class="num"><%- dataId %></i></div><div class="fl"><span class="title"><%- dataItem.title %></span><span class="desc desc2"><%- dataItem.desc2 %></span><span class="desc"><%- dataItem.desc %></span><span class="desc desc1"><%- dataItem.desc1 %></span></div></div> ';                    
+
+
+
+                    var content = MarkerList.utils.template(tpl, {
+
+                        dataItem: dataItem,
+
+                        dataId: context.id
+
+                    });
+
+
+
+                    if (recycledListElement) {
+
+                        //存在可回收利用的listElement, 直接更新内容返回
+
+                        recycledListElement.innerHTML = content;
+
+                        return recycledListElement;
+
+                    }
+
+
+
+                    //返回一段html，MarkerList将利用此html构建一个新的dom节点
+
+                    return '<li>' + content + '</li>';
+
+                }
+
+
+
+            });
+
+
+
+            //构建一个数据项数组，数据项本身没有格式要求，但需要支持下述的getDataId和getPosition
+
+            var data = [{dede:field.addlist/}];
+
+
+
+            //展示该数据
+
+            markerList.render(data);
+
+        });
+
+    </script>
+  </body>
+</html>

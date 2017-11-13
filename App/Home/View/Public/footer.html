@@ -1,0 +1,94 @@
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="footer-nav hidden-xs">
+                    <volist name="channel" id="vo">
+                    <a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}">{$vo.name}</a> |
+                    </volist>
+                </div>
+               <div class="footer-nav visible-xs">
+                   <volist name="channel" id="vo" key="k">
+                       <?php $n = count($channel);?>
+                    <a href="{:U($vo['link'],array('id'=>$vo['id'],'pid'=>$vo['pid']))}"><?php echo (mb_substr($vo['name'],0,2,'utf-8'));?></a>
+                       <if condition="$k lt $n">|</if><?php echo $nbsp;?>
+                   </volist>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <!-- contact -->
+                <div class="contact">
+                    <p>
+                        地址：{$contact['addr']}<br>
+                        邮箱：{$contact['email']}
+                    </p>
+                    <p>
+                        加盟咨询热线：
+                       {$contact['phone']}
+                    </p>
+                    <div class="wx row">
+                        <div class="col-xs-12">
+                            <div class="pull-left">
+                                <img class="wow pulse" src="__PUBLIC__/milan/img/wx-1.png" alt="微信公众号">
+                                <p class="text-center">微信公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- contact -->
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <!-- message -->
+                <div class="message">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="msg-title wow lightSpeedIn">
+                                <span>在线留言</span>
+                                <span class="msg-action">温馨提示：请留下您的联系，我们将第一时间回复您</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form name="myform" action="{:U('Message/index')}" enctype="multipart/form-data" method="post" onSubmit="return(form_c());">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group clearfix">
+                                <label class="col-sm-2 control-label">姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="name" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group clearfix">
+                                <label class="col-sm-2 control-label">电话</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="请输入电话" name="phone" onkeyup="ta(this)" onBlur="sq(this)" maxlength="11">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <p>请在以下区域输入您的留言内容：</p>
+                            <textarea name="message" maxlength="200" rows="10" class="form-control"></textarea>
+                            <div class="clearfix">
+                                <p class="msg-submit"><input type="submit" value="提交留言" style=" width: 111px; height: 31px; background-color: #030303; border: 0px"></p>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- message -->
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="container">
+            {$Think.CONFIG.footer} {$Think.CONFIG.footer-address}
+            <!--<span>Powered by 广州谜兰时黛服装管理有限公司</span>
+            <span>粤ICP备170905001号（网站地图）</span>
+            <span>地址：XXX省XXX市XXX县XXX路XXX号</span>
+            <span>服务热线：400-600-8888 电话：0755-8888 8888</span>-->
+    </div>
+</div>
+</div>
