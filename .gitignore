@@ -53,3 +53,7 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+
+# 项目排除文件
+/App/Common/Conf/db.php
+/App/Runtime/
