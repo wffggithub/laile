@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>注册/登录</title>
+
+    <!-- Bootstrap -->
+    <link href="__PUBLIC__/laile/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/laile/css/stylee.css" rel="stylesheet">
+    <link href="__PUBLIC__/laile/css/animate.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color: #081227;padding-top:55px;background-image: url(__PUBLIC__/laile/images/t10.jpg);background-position: center top;background-size: cover;">
+    <!-- head -->
+<include file="Public/m_head"/>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 login-title"><h2>暂只对内部员工开放</h2>
+        <h1>来乐社区<br>欢迎你</h1>
+      </div>
+    </div>
+  </div>
+<div class="logintype">
+      <lable>
+        <dl>
+          <dd class="clearfix">
+            <div class="fl">
+              <i class="ico ico_1"></i>
+            </div>
+            <div class="fl">
+              <input type="text" value="Select or Enter Nas ID" onfocus="if(this.value=='Select or Enter Nas ID'){this.value='';}" onblur="if(this.value==''){this.value='Select or Enter Nas ID';}">
+            </div>
+          </dd>
+          <dd class="clearfix">
+            <div class="fl">
+              <i class="ico ico_2"></i>
+            </div>
+            <div class="fl">
+              <input type="text" value="sai501@163.com" onfocus="if(this.value=='sai501@163.com'){this.value='';}" onblur="if(this.value==''){this.value='sai501@163.com';}">
+            </div>
+          </dd>
+          <dd class="clearfix">
+            <div class="fl">
+              <i class="ico ico_3"></i>
+            </div>
+            <div class="fl">
+              <input type="text" value="......" onfocus="if(this.value=='在这里搜索...'){this.value='';}" onblur="if(this.value==''){this.value='在这里搜索...';}">
+            </div>
+          </dd>                   
+        </dl>
+      </lable>
+      <div class="w300 remnum" style="padding: 19px 55px;">
+        <div class="clearfix">
+        <div class="fl"><input type="checkbox" id="myCheck" checked="checked"></div>
+        <div class="fl">记住密码</div>
+        </div>
+      </div>
+      <div class="loginbtn w414">
+        <input type="submit" value="登 录">
+      </div>
+      <div class="crebtn w300" style="padding: 19px 55px;">
+        <p>创建账户</p>
+      </div>
+    </div>
+<include file='Public/m_foot'/>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__PUBLIC__/laile/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+    <script>
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 5,
+        offset : 205,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>
+    <script>
+  $(document).ready(function(){
+    $(".p-b").click(function(){
+      $(".hidd").toggle();
+    });
+  });
+</script>
+  </body>
+</html>

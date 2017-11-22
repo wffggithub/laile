@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{$seotitle}</title>
+
+    <!-- Bootstrap -->
+    <link href="__PUBLIC__/laile/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/laile/css/stylee.css" rel="stylesheet">
+    <link href="__PUBLIC__/laile/css/animate.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color: #081227;padding-top:44px;padding-bottom: 44px;">
+    <!-- head -->
+    <include file="Public/m_head"/>
+
+
+
+    <div class="article_article">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 c-ffffff text-center mr10-0 ">
+              {$name}
+        </div>
+          <div class="col-xs-12 c-ffffff text-center mr10-0 ">
+            {$info['t'] | date='Y-m-d H:i:s',###}
+        </div>
+          <div class="col-xs-12 c-ffffff">
+              {$info.content}
+        </div>
+          <div class="col-xs-12">
+          <a class="fhbtn" href="javascript:history.back(-1)">返回列表</a>
+        </div>        
+      </div>     
+    </div>
+<!--  3 -->
+        <include file='Public/m_foot'/>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__PUBLIC__/laile/js/bootstrap.min.js"></script>
+    
+    <script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+    <!-- <script type="text/javascript" src="js/flexible.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/laile/js/iscroll.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/laile/js/navbarscroll.js"></script>
+<script type="text/javascript">
+$(function(){
+
+  //demo示例一到四 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+  $('.wrapper').navbarscroll();
+
+  //demo示例五 通过id调取
+  $('#demo05').navbarscroll({
+    defaultSelect:6,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+  
+  //demo示例六 通过id调取
+  $('#demo06').navbarscroll({
+    defaultSelect:3,
+    scrollerWidth:6,
+    fingerClick:1,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+});
+</script>      
+    <script>
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 5,
+        offset : 205,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>
+  </body>
+</html>
