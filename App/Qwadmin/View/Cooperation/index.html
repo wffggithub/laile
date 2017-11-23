@@ -30,15 +30,15 @@
                         <div class="cf">
                             <form class="form-inline" action="" method="get">
                                 <a class="btn btn-info" href="{:U('add')}" value="">新增</a>
-                                <label class="inline">所属导航</label>
+                              <!--  <label class="inline">所属导航</label>
                                 <select name="sid" class="form-control">
-                                    <option value="0">--导航--</option>
+                                    <option value="0">&#45;&#45;导航&#45;&#45;</option>
                                     <volist name="category" id="vo">
                                         <option value="{$vo.id}" <if condition="$vo['id'] eq $sid">selected</if>>{$vo.name}</option>
                                     </volist>
                                 </select>
-                               <!-- <label class="inline">文章标题</label>
-                                <input type="text" name="keyword" value="{:I('keyword')}" class="form-control">-->
+                               &lt;!&ndash; <label class="inline">文章标题</label>
+                                <input type="text" name="keyword" value="{:I('keyword')}" class="form-control">&ndash;&gt;
 
                                 <label class="inline">&nbsp;&nbsp;排序：</label>
                                 <select name="order" class="form-control">
@@ -51,7 +51,7 @@
                                 <button type="submit" class="btn btn-purple btn-sm">
                                     <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
                                     搜索
-                                </button>
+                                </button>-->
                             </form>
                         </div>
                         <div class="space-4"></div>
@@ -60,7 +60,7 @@
                                 <thead>
                                 <tr>
                                     <th class="center"><input class="check-all" type="checkbox" value=""></th>
-                                    <th>所属导航</th>
+                                  <!--  <th>所属导航</th>-->
                                     <th width="10%">左侧图</th>
                                     <th>SEO标题</th>
                                     <th>关键词</th>
@@ -74,8 +74,8 @@
                                     <tr class="text-center">
                                         <td class="center"><input class="aids" type="checkbox" name="aids[]"
                                                                   value="{$val['id']}"></td>
-                                        <td><a href="{:U('index',array('sid'=>$val['sid']))}" title="{$val['name']}">{$val['name']}</a>
-                                        </td>
+                                      <!--  <td><a href="{:U('index',array('sid'=>$val['sid']))}" title="{$val['name']}">{$val['name']}</a>
+                                        </td>-->
                                         <td><a target="_blank" href="{$val['image_path']}"><img src="{$val['image_path']}" style="width:300px"></a></td>
                                         <td>{$val['seotitle']}</td>
                                         <td>{$val['keywords']}</td>
