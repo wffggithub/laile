@@ -1047,7 +1047,6 @@ input {
     height: 863px;
 }
 .banner .ico4{
-    background-image: url(../images/002.gif);
     width: 84px;
     height: 180px;
     position: absolute;
@@ -1059,6 +1058,55 @@ input {
     background-repeat: no-repeat;
     text-align: center;
     background-position: 0px 70px;
+}
+.banner .icon-more{
+    -webkit-animation: arrowup 3s 1s infinite;
+    animation: arrowup 3s 1s infinite;
+    will-change: transform;
+    cursor: pointer;
+}
+@-webkit-keyframes arrowup {
+	0%,
+	30% {
+		opacity: 1
+	}
+	15%,
+	45% {
+		opacity: .5
+	}
+	100%,
+	60% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0)
+	}
+	75% {
+		opacity: .5;
+		-webkit-transform: translateY(30px);
+		transform: translateY(30px)
+	}
+}
+
+@keyframes arrowup {
+	0%,
+	30% {
+		opacity: 1
+	}
+	15%,
+	45% {
+		opacity: .5
+	}
+	100%,
+	60% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0)
+	}
+	75% {
+		opacity: .5;
+		-webkit-transform: translateY(30px);
+		transform: translateY(30px)
+	}
 }
 .banner .ico4 p{
     color:#ffffff;
@@ -1177,25 +1225,10 @@ input {
     -ms-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
     /* border: 1px solid #ffffff; */
 }
-.indexjpg .p1 img{
-    width: 330px;
-    height: 167px;
-    border: 5px solid #9bdbff;
-}
-.indexjpg .p2 img{
-    width: 217px;
-    height: 110px;
-    border: 5px solid #9bdbff;
-}
-.indexjpg .p3 img{
-    width: 264px;
-    height: 134px;
-    border: 5px solid #9bdbff;
-}
-.indexjpg .p4 img{
-    width: 212px;
-    height: 108px;
-    border: 5px solid #9bdbff;
+.indexjpg .p-a img{
+    width: 100%;
+    height: 100%;
+    box-shadow: 3px 2px 0 #cdddf0;
 }
 .indexjpg .p-a1 {
     right: 321px;
@@ -1210,53 +1243,51 @@ input {
     width: 214px;
     height: 74px;
     background-position: center;
-    right: 165px;
-    bottom: 153px;
+    right: 146px;
+    bottom: 165px;
+}
+.indexjpg .p-a3 {
+    background-image: url(../images/indexbottom-logo.png);
+    width: 214px;
+    height: 74px;
+    background-position: center;
+    background-repeat: no-repeat;
+    right: 146px;
+    bottom: 83px;
 }
 
 .p1 {
-    /* background-image: url(../images/p1.png); */
-    /* width: 330px; */
-    /* height: 167px; */
-    left: 126px;
+    width: 260px;
+    height: 202px;
+    left: 183px;
     top: 29px;
     border: 1px solid #5e8dff;
     padding: 10px;
     /* margin: 10px; */
     overflow: hidden;
 }
-.p1 a{
-    /* border:10px solid transparent; */
-    /* background-image: url(http://cunchu.cuteboy.net/1080p.jpg?imageMogr2/auto-orient/thumbnail/1200x608!/blur/1x0/quality/100|imageslim); */
-    /* background-repeat: no-repeat; */
-    /* background-position: center top; */
-}
 .p2 {
-    /* background-image: url(../images/p2.png); */
-    /* width: 217px; */
-    /* height: 110px; */
-    left: 330px;
+    width: 160px;
+    height: 130px;
+    left: 395px;
     bottom: 143px;
     border: 1px solid #5e8dff;
     padding: 10px;
 }
 
 .p3 {
-    /* background-image: url(../images/p3.png); */
-    /* width: 264px; */
-    /* height: 134px; */
-    left: 538px;
-    top: 145px;
+    width: 200px;
+    height: 159px;
+    left: 618px;
+    top: 126px;
     border: 1px solid #5e8dff;
     padding: 10px;
 }
-
 .p4 {
-    /* background-image: url(../images/p4.png); */
-    /* width: 212px; */
-    /* height: 108px; */
-    right: 71px;
-    top: 74px;
+    width: 161px;
+    height: 130px;
+    right: 125px;
+    top: 131px;
     border: 1px solid #5e8dff;
     padding: 10px;
 }
@@ -1295,8 +1326,8 @@ input {
     /* text-indent:-9999999px; */
     display:block;
     /* position: relative; */
-    /* height: 100%; */
-    /* width: 100%; */
+    height: 100%;
+    width: 100%;
     }
 
 .list_article_type {
@@ -1305,12 +1336,14 @@ input {
 .list_article_type ul {
 }
 
-.list_article_type ul li {
+.list_article_type .mb60 {
     background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .list_article_type ul li .img {width: 777px;overflow: hidden;height: 394px;}
-.list_article_type ul li .img img{width:777px;:height:394px;}
+.list_article_type ul li .img img{width:777px;height:394px;}
 .list_article_type ul li .txt {
     width: 309px;
     padding: 0px 72px 0px 42px;
@@ -1327,6 +1360,7 @@ input {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: '微软雅黑'
 }
 
 .list_article_type ul li .txt span.desc {
@@ -1764,6 +1798,25 @@ input {
     width: 911px;
     height: auto;
     margin-right: 0;
+}
+
+.dataTables_paginate{
+    width: 100%;
+    height: 30px;
+}
+.dataTables_paginate .pagination{
+    width: 200px;
+    float: right;
+    display: block;
+}
+.dataTables_paginate .pagination li{
+    margin: 0 5px;
+    min-width: 20px;
+    float: left;
+    text-align: center;
+}
+.dataTables_paginate .pagination li.active{
+    border-bottom: 1px solid #666;
 }
 
 #allmap,#allmap1,#allmap2,#allmap3,#allmap4,#allmap5,#allmap6,#allmap7,#allmap8 {
