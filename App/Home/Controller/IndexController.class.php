@@ -25,6 +25,9 @@ class IndexController extends ComController {
         // TODO 获取轮播图
         $image = M('Introduce')->alias('i')->field('i.*,c.link')->join('__CATEGORY__ c ON c.id = i.sid')->select();
         $this->assign('image',empty($image) ? [] :  $image);
+        $activity = M('activity')->order('t desc')->limit(5)->select();
+        $this->assign('activity',$activity);
+
         $this->display();
     }
 

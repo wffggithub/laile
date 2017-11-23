@@ -42,6 +42,7 @@
                                     <th>SEO标题</th>
                                     <th>关键词</th>
                                     <th class ='col-xs-3'>描述</th>
+                                    <th>排序</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -55,6 +56,7 @@
                                         <td>{$val['seotitle']}</td>
                                         <td>{$val['keywords']}</td>
                                         <td>{$val['description']}</td>
+                                        <td> <input name="o" class="inputorder" type="number" value="{$val['o']}" val="{$val['id']}"/></td>
                                         <td>{$val['t']|date="Y-m-d H:i:s",###}</td>
                                         <td><a href="{:U('edit',array('id'=>$val['id']))}"><i
                                                 class="ace-icon fa fa-pencil bigger-100"></i>修改</a>&nbsp&nbsp;<a
@@ -134,6 +136,21 @@
                 }
             });
         });
+
+        $(".inputorder").change(function () {
+            var id = $(this).attr('val');
+            var o = $(this).val();
+            if (id != o) {
+                $.post("{:U('update',array('act'=>'order'))}", {id: id, o: o}, function (data) {
+                        if (data == 1) {
+                            window.location.reload(true);
+                        }
+                    }
+                )
+                ;
+            }
+        })
+
     })
 </script>
 </body>

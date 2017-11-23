@@ -44,10 +44,10 @@ class PositionController extends ComController
             $where .= "and {$prefix}position.title like '%{$keyword}%' ";
         }
         //默认按照时间降序
-        $orderby = "t asc";
+        $orderby = "o asc";
         if ($order == "desc") {
 
-            $orderby = "t desc";
+            $orderby = "o desc";
         }
 
 

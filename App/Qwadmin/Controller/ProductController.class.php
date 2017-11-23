@@ -131,12 +131,16 @@ class ProductController extends ComController
         $data['description'] = I('post.description', '', 'strip_tags');
         $data['content'] = isset($_POST['content']) ? $_POST['content'] : false;
         $data['image_path'] = I('post.image_path', '', 'strip_tags');
+        $data['m_image_path'] = I('post.m_image_path', '', 'strip_tags');
         $data['t'] = time();
        /* if (!$data['sid'] or !$data['title'] or !$data['content']) {
             $this->error('警告！文章分类、文章标题及文章内容为必填项目。');
         }*/
         if (empty($data['image_path'])) {
-            $this->error('图片未上传');
+            $this->error('banner图片未上传');
+        }
+        if (empty($data['m_image_path'])) {
+            $this->error('移动端图片未上传');
         }
 
         if ($id) {

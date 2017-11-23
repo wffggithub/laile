@@ -62,6 +62,7 @@
                                     <th class="center"><input class="check-all" type="checkbox" value=""></th>
                                     <th>所属导航</th>
                                     <th width="10%">banner图</th>
+                                    <th width="5%">移动端图</th>
                                     <th>SEO标题</th>
                                     <th>关键词</th>
                                     <th class ='col-xs-3'>描述</th>
@@ -77,6 +78,7 @@
                                         <td><a href="{:U('index',array('sid'=>$val['sid']))}" title="{$val['name']}">{$val['name']}</a>
                                         </td>
                                         <td><a target="_blank" href="{$val['image_path']}"><img src="{$val['image_path']}" style="width:300px"></a></td>
+                                        <td><a target="_blank" href="{$val['m_image_path']}"><img src="{$val['m_image_path']}" style="width:150px"></a></td>
                                         <td>{$val['seotitle']}</td>
                                         <td>{$val['keywords']}</td>
                                         <td>{$val['description']}</td>
