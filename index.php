@@ -38,16 +38,16 @@ define('APP_DEBUG',true);
     }
 }
 
+
+// 定义应用目录
+define('APP_PATH','./App/');
+
 if(isMobile()){
-    define('APP_STATUS','config_Mobile');
+    define('APP_STATUS','config_mobile');
 } else {
     define('APP_STATUS','Index');
 }
 
-
-
-// 定义应用目录
-define('APP_PATH','./App/');
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 
