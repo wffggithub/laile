@@ -1844,9 +1844,10 @@ input {
     padding-bottom: 30px;
 }
 .dataTables_paginate .pagination{
-    width: 200px;
+    min-width: 100px;
     float: right;
     display: block;
+    margin-right: 90px;
 }
 .dataTables_paginate .pagination li{
     margin: 0 5px;
