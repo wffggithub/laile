@@ -19,7 +19,7 @@ class LatestController extends ComController
         $all = M('category')->field('id,name')->where(['pid'=>$Pcate['id']])->select();
         $sid = I('id',0,'intval') == 0 ? $all[0]['id'] : I('id',0,'intval');
         $info = M('latest')->alias('L')->field('L.*,c.name')->join('__CATEGORY__ c ON c.id=L.sid')->where(['sid'=>$sid])->find();
-        $this->assign('name',$info['name']);
+        $this->assign('name',$Pcate['name']);
         $this->assign('all',$all);
         $this->assign('info',$info);
         $this->assign('seotitle',$info['seotitle']);

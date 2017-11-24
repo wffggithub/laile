@@ -13,8 +13,9 @@
 	<meta name="description" content="{$description}" />
 
 	<link rel="stylesheet" href="__PUBLIC__/laile/css/style.css" />
+
 	<style type="text/css">
-		.sb_type p{
+		.aricle_arrrr p{
 			text-indent: 0px;
 		}
 	</style>
@@ -62,11 +63,9 @@
 		<div class="fr nav">
 
 			<ul class="clearfix">
-
 				<volist name="channelTop" id="v">
 					<li><a href="{:U($v['link'])}">{$v.name}</a></li>
 				</volist>
-
 			</ul>
 
 		</div>
@@ -75,39 +74,43 @@
 
 </div>
 
-<div class=" " style="margin-top: 100px;">
+<div class="banner h378 ibanner">
 
-	<!--<img src="{$banner.image_path}" alt="" />-->
+	<img src="{$banner.image_path}" alt="" />
 
 </div>
 
-<div class="middlle p-r mt60 article_sb_type">
+<div class="middlle p-r mt60 list_article_type">
 
-	<div class="w1200 clearfix">
+	<div class="w1200">
 
-		<div class="fl w244">
+		<div class="aricle_arrr">
 
-			<div class="title">
+			<!-- 			<div class="text-center">
+            
+                            <img src="/images/defaultpic.gif" alt="" />
+            
+                        </div> -->
+
+			<h1>
 
 				{$name}
 
-			</div>
-
-			<ul style="margin-bottom: 62px;">
-				<volist name="all" id="v">
-					<li id="c_8"><a href="{:U('index',array('id'=>$v['id']))}"><span class="en">{$v.name}</span></a></li>
-				</volist>
-			</ul>
-
-		</div>
-
-		<div class="fr w911 sb_type">
-
-			<div>
+			</h1>
+			<div class="aricle_arrrr">
 				{$info.content}
 			</div>
-
 		</div>
+
+		<!-- 		<div class="fhbtn">
+        
+                    <a href="javascript:history.back(-1)">返回列表</a>
+        
+                </div> -->
+
+
+
+
 
 	</div>
 
@@ -183,14 +186,7 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script src="__PUBLIC__/laile/js/jquery.SuperSlide.2.1.1.js"></script>
-<input type="hidden" value="6" id="ddid"/>
-<script>
-    $(document).ready(function(){
-        var ccid=$("#ddid").val();
-        $("#d_"+ccid).addClass("cur");
-    });
 
-</script>
 <script type="text/javascript">
 
     jQuery(".banner").slide({mainCell:".bd ul",trigger:"click",effect:"fold",autoPlay:false,easing:"easeOutCirc"});
