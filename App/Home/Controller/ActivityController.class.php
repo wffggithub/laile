@@ -18,7 +18,7 @@ class ActivityController extends ComController
 
 
         $page = I('p',1,'intval');
-        $num = 2;//每页显示的数量
+        $num = 6;//每页显示的数量
         $count = M('activity')->count();
         $this->assign('count',$count);
 
