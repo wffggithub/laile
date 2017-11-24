@@ -138,9 +138,9 @@ class SolutionController extends ComController
         $data['m_image_path'] = I('post.m_image_path', '', 'strip_tags');
         $data['t'] = time();
 
-        if (empty($data['image_path'])) {
+      /*  if (empty($data['image_path'])) {
             $this->error('banner图片未上传');
-        }
+        }*/
 
         if (empty($data['m_image_path'])) {
             $this->error('移动端图片未上传');
