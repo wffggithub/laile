@@ -86,30 +86,15 @@
   <div id="1" class="middlle indexjpg p-r">
     <div class="w1200 h649">
       <div class="">
-        <div class="p-a p1">
-          <a href="/zuixinhuodong/20170820/28.html">
-            <img src="http://cunchu.cuteboy.net/1080p.jpg?imageMogr2/auto-orient/thumbnail/1200x608!/blur/1x0/quality/100|imageslim"
+        <volist name="activity" id="v" key="k">
+
+        <div class="p-a p{$k}">
+          <a href="{:U('Activity/detail',array('id'=>$v['id']))}">
+            <img src="{$v.image_path}"
             alt="" />
           </a>
         </div>
-        <div class="p-a p2">
-          <a href="/zuixinhuodong/20170806/2.html">
-            <img src="http://cunchu.cuteboy.net/1080p.jpg?imageMogr2/auto-orient/thumbnail/1200x608!/blur/1x0/quality/100|imageslim"
-              alt="" />
-          </a>
-        </div>
-        <div class="p-a p3">
-          <a href="/zuixinhuodong/20170819/27.html">
-            <img src="http://cunchu.cuteboy.net/1080p.jpg?imageMogr2/auto-orient/thumbnail/1200x608!/blur/1x0/quality/100|imageslim"
-              alt="" />
-          </a>
-        </div>
-        <div class="p-a p4">
-          <a href="/zuixinhuodong/20170806/1.html">
-            <img src="http://cunchu.cuteboy.net/1080p.jpg?imageMogr2/auto-orient/thumbnail/1200x608!/blur/1x0/quality/100|imageslim"
-              alt="" />
-          </a>
-        </div>
+        </volist>
         <!-- 			<div class="p-a p2"></div>
                         <div class="p-a p3"></div>
                         <div class="p-a p4"></div> -->
