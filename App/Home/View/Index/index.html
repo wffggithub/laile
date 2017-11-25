@@ -107,10 +107,14 @@
         <div class="star s9"></div>
       </div>
       <div class="p-a p-a1">
-          <span>我来玩</span>
+        <div class="p5">
+          <span></span>
+        </div>
       </div>
       <div class="p-a p-a2">
-          <a href="{:U('Cooperation/index')}">要合作</a>
+        <div class="p6">
+          <a href="{:U('Cooperation/index')}"></a>
+        </div>
       </div>
       <div class="p-a p-a3"></div>
     </div>
@@ -194,22 +198,22 @@
       });
 
       function imgHover(m,n){
-          $('".' + m + '"').hover(function () {
-              $('".' + n + '"').css('opacity', 1);
+          m.hover(function () {
+              n.css('opacity', 1);
           },function () {
-              $('".' + n + '"').css('opacity', 0);
+              n.css('opacity', 0);
           })
       }
 
-      imgHover('s1', 'p1');
-      imgHover('s2', 'p2');
-      imgHover('s3', 'p2');
-      imgHover('s4', 'p2');
-      imgHover('s5', 'p3');
-      imgHover('s6', 'p3');
-      imgHover('s7', 'p4');
-      imgHover('s8', 'p4');
-      imgHover('s9', 'p4');
+      imgHover($('.s1'), $('.p1'));
+      imgHover($('.s2'), $('.p2'));
+      imgHover($('.s3'), $('.p2'));
+      imgHover($('.s4'), $('.p2'));
+      imgHover($('.s5'), $('.p3'));
+      imgHover($('.s7'), $('.p4'));
+      imgHover($('.s6'), $('.p3'));
+      imgHover($('.s8'), $('.p4'));
+      imgHover($('.s9'), $('.p4'));
     });
   </script>
 </body>
