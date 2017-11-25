@@ -8,7 +8,6 @@ class CooperationController extends ComController
 {
     public function index()
     {
-        
 
         $Pcate = M('category')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
         //banner图
