@@ -14,7 +14,7 @@ class CooperationController extends ComController
         $banner = M('banner')->where(['sid'=>$Pcate['id']])->find();
         $this->assign('banner',$banner);
 
-        $info = M('cooperation')->select();
+        $info = M('cooperation')->order('t desc')->find();
         $this->assign('info',$info);
         $this->assign('seotitle',$info['seotitle']);
         $this->assign('keywords',$info['keywords']);
