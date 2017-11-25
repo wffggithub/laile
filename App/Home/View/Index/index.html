@@ -88,16 +88,23 @@
       <div class="">
         <volist name="activity" id="v" key="k">
 
-        <div class="p-a p{$k}">
+        <div class="p-a p-img p{$k}">
           <a href="{:U('Activity/detail',array('id'=>$v['id']))}">
             <img src="{$v.image_path}"
             alt="" />
           </a>
         </div>
         </volist>
-        <!-- 			<div class="p-a p2"></div>
-                        <div class="p-a p3"></div>
-                        <div class="p-a p4"></div> -->
+
+        <div class="star s1"></div>
+        <div class="star s2"></div>
+        <div class="star s3"></div>
+        <div class="star s4"></div>
+        <div class="star s5"></div>
+        <div class="star s6"></div>
+        <div class="star s7"></div>
+        <div class="star s8"></div>
+        <div class="star s9"></div>
       </div>
       <div class="p-a p-a1">
         <div class="p-b p5">
@@ -181,8 +188,13 @@
   </script>
   <script>
     $(document).ready(function () {
+        var imgs = $(".p-img");
       $(".p-b").click(function () {
-//        $(".hidd").toggle();
+          if(imgs.hasClass('imgShow')){
+              imgs.removeClass("imgShow");
+          }else{
+              imgs.addClass("imgShow");
+          }
       });
     });
   </script>
