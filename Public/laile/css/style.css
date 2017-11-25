@@ -1329,6 +1329,7 @@ input {
     /* bottom: 79px; */
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 
 }
 .p5 a{
@@ -1418,12 +1419,13 @@ input {
     height: 74px;
     margin-left: auto;
     margin-right: auto;
-   
+
 }
 .p6 a{
     text-indent:-9999999px;
     display:block;
     line-height: 74px;
+    height:100%;
 }
 .p1 a,.p2 a,.p3 a,.p4 a{
     /* text-indent:-9999999px; */
