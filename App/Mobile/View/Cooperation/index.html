@@ -18,51 +18,30 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="background-color: #081227;padding-top:44px;padding-bottom: 41px;">
+  <body style="background-color: #081227;padding-top:44px;padding-bottom: 44px;">
     <!-- head -->
     <include file="Public/m_head"/>
 
+    <div class="article_article">
 
-
-
-
-<!--     <div class="bannertype">
-      <div class="container-fluid">
-        <div class="bannert1">
-          
-        </div>
-      </div>
-    </div> -->
-    <div class="list_article">
       <div class="container">
         <div class="row">
-<!--           {dede:arclist row='4' titlelen='250' typeid='7'}
-          <li> <a href="view.php?aid=[field:id/]"> <img src="[field:litpic/]" alt="[field:title/]"> <span> [field:title/]</span> <b></b> </a> </li>
-          {/dede:arclist}
- -->
-
-            <volist name="info" id="v">
-          <div class="article_list col-xs-12  bg-c-ffffff">
-            <div class="container">
-              <div class="row"><a href="{:U('detail',array('id'=>$v['id']))}" class="a1">
-                <div class="col-xs-12 imgtype">
-                  <img src="{$v.image_path}" alt="">
-                </div>
-                <div class="col-xs-12 txttype">
-                  <span class="title">
-                   {$v.title}
-                  </span>
-                  <span class="fr">></span>                    
-                </div>                
-              </a></div>
-            </div>
-          </div>
-            </volist>
+          <div class="col-xs-12 c-ffffff text-center mr10-0 ">
+          {$name}
         </div>
-      </div>
+          <div class="col-xs-12 c-ffffff text-center mr10-0 ">
+            {$info['t'] | date='Y-m-d H:i:s',###}
+        </div>
+          <div class="col-xs-12 c-ffffff">
+          {$info.content}
+        </div>
+          <div class="col-xs-12">
+          <a class="fhbtn" href="javascript:history.back(-1)">返回列表</a>
+        </div>        
+      </div>     
     </div>
-<!-- 5 -->
-    <include file='Public/m_foot'/>
+<!--  3 -->
+        <include file='Public/m_foot'/>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
@@ -70,6 +49,34 @@
     <script src="__PUBLIC__/laile/js/bootstrap.min.js"></script>
     
     <script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+    <!-- <script type="text/javascript" src="js/flexible.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/laile/js/iscroll.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/laile/js/navbarscroll.js"></script>
+<script type="text/javascript">
+$(function(){
+
+  //demo示例一到四 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+  $('.wrapper').navbarscroll();
+
+  //demo示例五 通过id调取
+  $('#demo05').navbarscroll({
+    defaultSelect:6,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+  
+  //demo示例六 通过id调取
+  $('#demo06').navbarscroll({
+    defaultSelect:3,
+    scrollerWidth:6,
+    fingerClick:1,
+    endClickScroll:function(obj){
+      console.log(obj.text())
+    }
+  });
+});
+</script>      
     <script>
 (function() {
     var header = new Headroom(document.querySelector("#header"), {
