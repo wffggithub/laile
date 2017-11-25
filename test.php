@@ -3,6 +3,4 @@
 $redis = new \Redis();
 $redis->connect('redis.duapp.com');
 var_dump($redis);
-echo "abc";
-
 ?>
