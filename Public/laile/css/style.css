@@ -1244,6 +1244,7 @@ input {
     width: 214px;
     height: 74px;
     background-position: center;
+    opacity:1 !important;
 }
 .indexjpg .p-a2 {
     background-image: url(../images/ico9.png);
@@ -1252,6 +1253,7 @@ input {
     background-position: center;
     right: 146px;
     bottom: 165px;
+    opacity:1 !important;
 }
 .indexjpg .p-a3 {
     background-image: url(../images/indexbottom-logo.png);
@@ -1261,6 +1263,7 @@ input {
     background-repeat: no-repeat;
     right: 146px;
     bottom: 83px;
+    opacity:1 !important;
 }
 
 .p1 {
@@ -1401,7 +1404,12 @@ input {
 .s7:hover + .p4,
 .s8:hover + .p4,
 .s9:hover + .p4{
-    opacity: 1;
+    transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    -moz-transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    -o-transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    -ms-transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    opacity: 1 !important;
 }
 
 .p6 {
