@@ -8,17 +8,18 @@ class CooperationController extends ComController
 {
     public function index()
     {
+        
 
-        $Pcate = M('category')->field('id,name')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
+        $Pcate = M('category')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
         //banner图
         $banner = M('banner')->where(['sid'=>$Pcate['id']])->find();
         $this->assign('banner',$banner);
 
         $info = M('cooperation')->order('t desc')->find();
         $this->assign('info',$info);
-        $this->assign('seotitle',$info['seotitle']);
-        $this->assign('keywords',$info['keywords']);
-        $this->assign('description',$info['description']);
+        $this->assign('seotitle',$Pcate['seotitle']);
+        $this->assign('keywords',$Pcate['keywords']);
+        $this->assign('description',$Pcate['description']);
         $this->display();
     }
 }

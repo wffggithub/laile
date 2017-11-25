@@ -6,12 +6,12 @@ use Think\Controller;
 class ActivityController extends ComController
 {
     /**
-     * 门店展示
+     *
      */
     public function index()
     {
 
-        $Pcate = M('category')->field('id,name')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
+        $Pcate = M('category')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
         //banner图
         $banner = M('banner')->where(['sid'=>$Pcate['id']])->find();
         $this->assign('banner',$banner);
