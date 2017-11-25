@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Controller;
-use OT\DataDictionary;
+/*use OT\DataDictionary;*/
 
 /**
  * 前台首页控制器
@@ -20,7 +20,7 @@ class IndexController extends ComController {
     public function index()
     {
 
-        $Pcate = M('category')->field('id,name')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
+        $Pcate = M('category')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
         // TODO 获取轮播图
         $image = M('Introduce')->alias('i')->field('i.*,c.link')->join('__CATEGORY__ c ON c.id = i.sid')->select();
         $this->assign('image',empty($image) ? [] :  $image);
