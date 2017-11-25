@@ -20,14 +20,15 @@ class IndexController extends ComController {
     public function index()
     {
 
-        //首页导航id
-        $id = $this->home_channel_id;
+        $Pcate = M('category')->field('id,name')->where(['pid'=>0,'dir'=>CONTROLLER_NAME])->find();
         // TODO 获取轮播图
         $image = M('Introduce')->alias('i')->field('i.*,c.link')->join('__CATEGORY__ c ON c.id = i.sid')->select();
         $this->assign('image',empty($image) ? [] :  $image);
         $activity = M('activity')->order('t desc')->limit(4)->select();
         $this->assign('activity',$activity);
-
+        $this->assign('seotitle',$Pcate['seotitle']);
+        $this->assign('keywords',$Pcate['keywords']);
+        $this->assign('description',$Pcate['description']);
         $this->display();
     }
 

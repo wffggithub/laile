@@ -17,6 +17,7 @@ class ProductController extends ComController
 
         $all = M('category')->field('id,name')->where(['pid'=>$Pcate['id']])->select();
         $sid = I('id',0,'intval') == 0 ? $all[0]['id'] : I('id',0,'intval');
+        $this->assign('sid',$sid);
         $info = M('product')->where(['sid'=>$sid])->find();
         $this->assign('name',$Pcate['name']);
         $this->assign('all',$all);
