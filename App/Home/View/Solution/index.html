@@ -95,7 +95,7 @@
 			<ul style="margin-bottom: 62px;">
 
 				<volist name="all" id="v">
-					<li id="c_8"><a href="{:U('index',array('id'=>$v['id']))}"><span class="en">{$v.name}</span></a></li>
+					<li id="c_8" <if condition="$v[id] eq $sid">class="cur"</if> ><a href="{:U('index',array('id'=>$v['id']))}"><span class="en">{$v.name}</span></a></li>
 				</volist>
 
 			</ul>
@@ -190,7 +190,7 @@
 <script>
     $(document).ready(function(){
         var ccid=$("#ccid").val();
-        $("#c_"+ccid).addClass("cur");
+        //$("#c_"+ccid).addClass("cur");
     });
 
 </script>

@@ -34,9 +34,9 @@ class ActivityController extends ComController
 
         $this->assign('page',$show);// 赋值分页输出
 
-        $this->assign('seotitle',$info['seotitle']);
-        $this->assign('keywords',$info['keywords']);
-        $this->assign('description',$info['description']);
+        $this->assign('seotitle',$Pcate['seotitle']);
+        $this->assign('keywords',$Pcate['keywords']);
+        $this->assign('description',$Pcate['description']);
         $this->display();
     }
 
