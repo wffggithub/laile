@@ -1213,10 +1213,6 @@ input {
     opacity: 0;
 }
 
-.indexjpg .imgShow{
-    opacity: 1;
-}
-
 .indexjpg .p-a {
     position: absolute;
     transition: all .3s ease;
@@ -1264,6 +1260,10 @@ input {
     right: 146px;
     bottom: 83px;
     opacity:1 !important;
+}
+
+.indexjpg .imgShow{
+    opacity: 1 !important;
 }
 
 .p1 {
